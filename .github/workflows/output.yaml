@@ -1,0 +1,26 @@
+name: OOut.
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python a.py
+          ls -la
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-file 
+          path:
+            hello.txt 
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: my-file 
+      - run: ls -la
