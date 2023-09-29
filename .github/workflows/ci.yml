@@ -29,14 +29,17 @@ jobs:
         id: modules
         uses: actions/cache@v3
         with:
-          path: ~/.cache/pip
+          path: venv
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
         
       # Runs a single command using the runners shell
       - name: Pip
         if: steps.modules.outputs.cache-hit != 'true'
-        run: pip install -r requirements.txt
-
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
       - run: pip freeze
 
   build:
@@ -53,12 +56,18 @@ jobs:
         id: modules
         uses: actions/cache@v3
         with:
-          path: ~/.cache/pip
+          path: venv
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
         
       # Runs a single command using the runners shell
       - name: Pip
         if: steps.modules.outputs.cache-hit != 'true'
-        run: pip install -r requirements.txt
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - run: pip freeze
+      - run: |
+          source venv/bin/activate
+          pip freeze
