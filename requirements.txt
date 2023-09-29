@@ -4,5 +4,5 @@ numpy
 django
 scipy
 sympy
-tensorflow
 keras
+tensorflow

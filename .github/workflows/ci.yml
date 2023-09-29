@@ -34,7 +34,7 @@ jobs:
         
       # Runs a single command using the runners shell
       - name: Pip
-        if: steps.modules.outputs.cache-hit != 'true'
+        if: steps.modules.outputs.cache-hit == 'true'
         run: pip install -r requirements.txt
 
       - run: pip freeze
@@ -58,7 +58,7 @@ jobs:
         
       # Runs a single command using the runners shell
       - name: Pip
-        if: steps.modules.outputs.cache-hit != 'true'
+        if: steps.modules.outputs.cache-hit == 'true'
         run: pip install -r requirements.txt
 
       - run: pip freeze
