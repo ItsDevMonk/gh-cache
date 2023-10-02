@@ -3,7 +3,8 @@ on: push
 jobs:
     job1:
       runs-on: ubuntu-latest
-      environment: dev
+      environment: ${{ github.ref_name  }}
       steps:
         - run: echo ${{ vars.VAR_A }}
+        - run: echo ${{ toJson(github) }}
 
