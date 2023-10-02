@@ -5,6 +5,7 @@ jobs:
       runs-on: ubuntu-latest
       environment: ${{ github.ref_name  }}
       steps:
-        - run: echo ${{ vars.VAR_A }}
-        - run: echo ${{ toJson(github) }}
+        - run: echo "${{ vars.VAR_A }}"
+        - run: echo "${{ toJson(github) }}"
+          name: Context
 
