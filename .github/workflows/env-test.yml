@@ -1,0 +1,9 @@
+on: push
+
+jobs:
+    job1:
+      runs-on: ubuntu-latest
+      environment: dev
+      steps:
+        - run: echo $VAR_A
+

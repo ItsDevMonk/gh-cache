@@ -1,6 +1,6 @@
 name: OOut.
 on:
-  push:
+  pull_request:
     branches: [ "main" ]
 
 jobs:
