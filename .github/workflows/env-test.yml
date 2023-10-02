@@ -5,5 +5,5 @@ jobs:
       runs-on: ubuntu-latest
       environment: dev
       steps:
-        - run: echo $VAR_A
+        - run: echo ${{ var.VAR_A }}
 
